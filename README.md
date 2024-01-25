@@ -1,7 +1,7 @@
 ## How To Use
 Place this piece of code at the top of your file:
 ```rust
-use rcalc::calc;
+use rxcalc::calc;
 ```
 Then, you can use rcalc like this:
 ```rust
