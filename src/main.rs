@@ -1,7 +1,7 @@
 // By Lingba Saner 24125 🍥 v0.9-final
 use std::env;
-mod rcalc;
-use rcalc::calc;
+mod rxcalc;
+use rxcalc::calc;
 fn main(){
     let args: Vec<String> = env::args().collect();
     if args.len() > 1 {

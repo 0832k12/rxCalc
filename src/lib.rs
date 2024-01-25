@@ -1,4 +1,4 @@
-mod rcalc;
+mod rxcalc;
 
 /// Computational expression
-pub use rcalc::calc;
+pub use rxcalc::calc;

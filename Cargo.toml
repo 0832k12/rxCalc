@@ -8,6 +8,6 @@ readme = "README.md"
 license = "MIT OR Apache-2.0"
 authors = ["0832 <0832k12@gmail.com>"]
 keywords = ["calc", "eval", "expression", "scratch", "0832",]
-repository = "https://github.com/0832k12/rCalc/"
+repository = "https://github.com/0832k12/rxCalc/"
 [dependencies]
 lazy_static = "1.4"
