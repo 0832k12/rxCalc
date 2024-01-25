@@ -1,0 +1,13 @@
+# By Lingba Saner 24125 🍥 v0.9-final
+[package]
+name = "rcalc"
+version = "1.0.0"
+edition = "2021"
+description = "An expression calculator, originally written in Scratch."
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+authors = ["0832 <0832k12@gmail.com>"]
+keywords = ["calc", "eval", "expression", "scratch", "0832", "rCodenow"]
+repository = "https://github.com/0832k12/rCalc/"
+[dependencies]
+lazy_static = "1.4"
