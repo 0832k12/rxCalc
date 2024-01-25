@@ -1,6 +1,6 @@
 # By Lingba Saner 24125 🍥 v0.9-final
 [package]
-name = "rcalc"
+name = "rxcalc"
 version = "1.0.0"
 edition = "2021"
 description = "An expression calculator, originally written in Scratch."
