@@ -1,4 +1,4 @@
-// By Lingba Saner 24125 🍥 v0.9-final
+// By r-Scratch-Compiler 2024-02-13T09:39:25.272Z 🍥 v0.11-dev
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 use std::sync::Arc;
@@ -7,16 +7,16 @@ lazy_static! {
     static ref GLOBAL_LIST_2: Mutex<Vec<String>> = Mutex::new(vec![]);
 }
 lazy_static! {
-    static ref _1_NUM_3: Mutex<f64> = Mutex::new(3.0);
+    static ref _1_NUM_3: Mutex<f64> = Mutex::new(3.0);  
     static ref _1_STR_3: Mutex<String> = Mutex::new((3).to_string());
-    static ref _1_NUM_4: Mutex<f64> = Mutex::new(17.0);
-    static ref _1_STR_4: Mutex<String> = Mutex::new((17).to_string());
-    static ref _1_NUM_5: Mutex<f64> = Mutex::new(0.0);
-    static ref _1_STR_5: Mutex<String> = Mutex::new((0).to_string());
+    static ref _1_NUM_4: Mutex<f64> = Mutex::new(3.0);
+    static ref _1_STR_4: Mutex<String> = Mutex::new((3).to_string());
+    static ref _1_NUM_5: Mutex<f64> = Mutex::new(1.0);
+    static ref _1_STR_5: Mutex<String> = Mutex::new((1).to_string());
     static ref _1_NUM_6: Mutex<f64> = Mutex::new(0.0);
-    static ref _1_STR_6: Mutex<String> = Mutex::new(("!1+13").to_string());
-    static ref _1_NUM_7: Mutex<f64> = Mutex::new(14.0);
-    static ref _1_STR_7: Mutex<String> = Mutex::new((14).to_string());
+    static ref _1_STR_6: Mutex<String> = Mutex::new(("!1*(1+1)").to_string());
+    static ref _1_NUM_7: Mutex<f64> = Mutex::new(2.0);
+    static ref _1_STR_7: Mutex<String> = Mutex::new((2).to_string());
     static ref _1_NUM_8: Mutex<f64> = Mutex::new(0.0);
     static ref _1_STR_8: Mutex<String> = Mutex::new((0).to_string());
     static ref _1_NUM_9: Mutex<f64> = Mutex::new(1.0);
@@ -32,7 +32,6 @@ fn get_f64_string<T: AsRef<str>>(toget: T) -> f64 {
         Err(_) => 0.0,
     }
 }
-
 fn utilities_string_to_boolean<T: AsRef<str>>(input: T) -> bool {
     let trimmed_input = input.as_ref().trim();
     if trimmed_input.is_empty()
@@ -44,8 +43,8 @@ fn utilities_string_to_boolean<T: AsRef<str>>(input: T) -> bool {
         true
     }
 }
-fn get_1_str_7() -> String {
-    let globalvar = _1_STR_7.lock().unwrap().clone();
+fn get_1_num_7() -> f64 {
+    let globalvar = *_1_NUM_7.lock().unwrap();
     globalvar
 }
 fn get_contains_1_list_12(item: String) -> bool {
@@ -74,12 +73,12 @@ fn get_1_num_9() -> f64 {
     let globalvar = *_1_NUM_9.lock().unwrap();
     globalvar
 }
+fn get_1_str_7() -> String {
+    let globalvar = _1_STR_7.lock().unwrap().clone();
+    globalvar
+}
 fn get_leng_1_list_12() -> f64 {
     _1_LIST_12.lock().unwrap().len() as f64
-}
-fn get_1_num_6() -> f64 {
-    let globalvar = *_1_NUM_6.lock().unwrap();
-    globalvar
 }
 fn get_1_str_6() -> String {
     let globalvar = _1_STR_6.lock().unwrap().clone();
@@ -88,10 +87,6 @@ fn get_1_str_6() -> String {
 fn get_lengglobal_list_1() -> f64 {
     GLOBAL_LIST_1.lock().unwrap().len() as f64
 }
-fn get_1_num_3() -> f64 {
-    let globalvar = *_1_NUM_3.lock().unwrap();
-    globalvar
-}
 fn get_char_at<T: AsRef<str>>(s: T, index: f64) -> String {
     s.as_ref()
         .chars()
@@ -99,8 +94,8 @@ fn get_char_at<T: AsRef<str>>(s: T, index: f64) -> String {
         .map(|c| c.to_string())
         .unwrap_or_default()
 }
-fn get_1_num_4() -> f64 {
-    let globalvar = *_1_NUM_4.lock().unwrap();
+fn get_1_num_3() -> f64 {
+    let globalvar = *_1_NUM_3.lock().unwrap();
     globalvar
 }
 fn get_itemglobal_list_1(item: usize) -> String {
@@ -110,20 +105,24 @@ fn get_itemglobal_list_1(item: usize) -> String {
         String::new()
     }
 }
-fn get_1_num_5() -> f64 {
-    let globalvar = *_1_NUM_5.lock().unwrap();
+fn get_1_num_4() -> f64 {
+    let globalvar = *_1_NUM_4.lock().unwrap();
     globalvar
 }
 fn get_1_str_5() -> String {
     let globalvar = _1_STR_5.lock().unwrap().clone();
     globalvar
 }
-fn get_1_num_8() -> f64 {
-    let globalvar = *_1_NUM_8.lock().unwrap();
+fn get_1_num_6() -> f64 {
+    let globalvar = *_1_NUM_6.lock().unwrap();
     globalvar
 }
 fn get_1_str_8() -> String {
     let globalvar = _1_STR_8.lock().unwrap().clone();
+    globalvar
+}
+fn get_1_num_5() -> f64 {
+    let globalvar = *_1_NUM_5.lock().unwrap();
     globalvar
 }
 fn get_item_1_list_10(item: usize) -> String {
@@ -139,10 +138,10 @@ fn get_containsglobal_list_1(item: String) -> bool {
 fn get_leng_1_list_10() -> f64 {
     _1_LIST_10.lock().unwrap().len() as f64
 }
-fn strings_repeat(s: &str, times: usize) -> String {
+fn strings_repeat<T: AsRef<str>>(s: T, times: usize) -> String {
     let mut result = String::new();
     for _ in 0..times {
-        result.push_str(s);
+        result.push_str(s.as_ref());
     }
     result
 }
@@ -171,89 +170,106 @@ fn get_position_1_list_11(value_to_find: String) -> f64 {
         0.0
     }
 }
+fn get_1_num_8() -> f64 {
+    let globalvar = *_1_NUM_8.lock().unwrap();
+    globalvar
+}
 lazy_static! {
     static ref SENSING_ANSWER: Mutex<String> = Mutex::new(String::new());
 }
-fn proc1(pm_9b6ba8c0: String, pm_e810d60f: String, pm_f6b64c2b: String) {
+fn proc1(pm_13: String, pm_14: String, pm_15: String) {
     *_1_NUM_7.lock().unwrap() = 0.0;
-    *_1_STR_7.lock().unwrap() = "0".to_string();
-    let result = match &pm_e810d60f[..] {
-        s if s.contains("==") && pm_9b6ba8c0 == pm_f6b64c2b => 1.0,
-        s if s.contains("!=") && pm_9b6ba8c0 != pm_f6b64c2b => 1.0,
-        s if s.contains("<")
-            && get_f64_string(pm_9b6ba8c0.clone()) < get_f64_string(pm_f6b64c2b.clone()) =>
-        {
-            1.0
-        }
-        s if s.contains(">")
-            && get_f64_string(pm_9b6ba8c0.clone()) > get_f64_string(pm_f6b64c2b.clone()) =>
-        {
-            1.0
-        }
-        s if s.contains("<=") && &pm_9b6ba8c0 <= &pm_f6b64c2b => 1.0,
-        s if s.contains(">=") && &pm_9b6ba8c0 >= &pm_f6b64c2b => 1.0,
-        s if s.contains("+") => {
-            let value = get_f64_string(pm_9b6ba8c0) + get_f64_string(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = value;
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("/") => {
-            let value = get_f64_string(pm_9b6ba8c0) / get_f64_string(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = value;
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("*") => {
-            let value = get_f64_string(pm_9b6ba8c0) * get_f64_string(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = value;
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("%") => {
-            let value = get_f64_string(pm_9b6ba8c0) % get_f64_string(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = value;
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("||") => {
-            let value = utilities_string_to_boolean(pm_9b6ba8c0)
-                || utilities_string_to_boolean(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = get_f64_string(if value { "1" } else { "0" });
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("&&") => {
-            let value = utilities_string_to_boolean(pm_9b6ba8c0)
-                && utilities_string_to_boolean(pm_f6b64c2b);
-            *_1_NUM_7.lock().unwrap() = get_f64_string(if value { "1" } else { "0" });
-            *_1_STR_7.lock().unwrap() = value.to_string();
-            return;
-        }
-        s if s.contains("..") => {
-            let value = get_f64_string((pm_9b6ba8c0.clone() + &pm_f6b64c2b).clone());
-            *_1_NUM_7.lock().unwrap() = value;
-            *_1_STR_7.lock().unwrap() = (pm_9b6ba8c0 + &pm_f6b64c2b).to_string();
-            return;
-        }
-        s if s == "" && pm_f6b64c2b == "" => {
-            *_1_NUM_7.lock().unwrap() = get_f64_string(pm_9b6ba8c0.clone());
-            *_1_STR_7.lock().unwrap() = pm_9b6ba8c0.clone();
-            return;
-        }
+    *_1_STR_7.lock().unwrap() = 0.0.to_string();
+    
+    match pm_14.as_str() {
+        "==" => {
+            if pm_13 == pm_15 {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        "!=" => {
+            if pm_13 != pm_15 {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        "<" => {
+            if get_f64_string(&pm_13) < get_f64_string(&pm_15) {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        ">" => {
+            if get_f64_string(&pm_13) > get_f64_string(&pm_15) {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        "<=" => {
+            if get_f64_string(&pm_13) <= get_f64_string(&pm_15) {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        ">=" => {
+            if get_f64_string(&pm_13) >= get_f64_string(&pm_15) {
+                *_1_NUM_7.lock().unwrap() = 1.0;
+                *_1_STR_7.lock().unwrap() = "1.0".to_string();
+            }
+        },
+        "+" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13) + get_f64_string(&pm_15);
+            *_1_STR_7.lock().unwrap() = (get_f64_string(&pm_13) + get_f64_string(&pm_15)).to_string();
+        },
+        "/" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13) / get_f64_string(&pm_15);
+            *_1_STR_7.lock().unwrap() = (get_f64_string(&pm_13) / get_f64_string(&pm_15)).to_string();
+        },
+        "*" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13) * get_f64_string(&pm_15);
+            *_1_STR_7.lock().unwrap() = (get_f64_string(&pm_13) * get_f64_string(&pm_15)).to_string();
+        },
+        "%" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13) % get_f64_string(&pm_15);
+            *_1_STR_7.lock().unwrap() = (get_f64_string(&pm_13) % get_f64_string(&pm_15)).to_string();
+        },
+        "||" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&(utilities_string_to_boolean(&pm_13) || utilities_string_to_boolean(&pm_15)).to_string());
+            *_1_STR_7.lock().unwrap() = (utilities_string_to_boolean(&pm_13) || utilities_string_to_boolean(&pm_15)).to_string();
+        },
+        "&&" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&(utilities_string_to_boolean(&pm_13) && utilities_string_to_boolean(&pm_15)).to_string());
+            *_1_STR_7.lock().unwrap() = (utilities_string_to_boolean(&pm_13) && utilities_string_to_boolean(&pm_15)).to_string();
+        },
+        ".." => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&(pm_13.to_owned() + &pm_15.to_owned()));
+            *_1_STR_7.lock().unwrap() = pm_13.to_owned() + &pm_15.to_owned();
+        },
+        "^" => {
+            *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13);
+            *_1_STR_7.lock().unwrap() = pm_13.clone();
+            let repeatto = (get_f64_string(&pm_13) - 1.0) as usize;
+            for _ in 0..repeatto {
+                *_1_NUM_7.lock().unwrap() = get_1_num_7() * get_f64_string(&pm_13);
+                *_1_STR_7.lock().unwrap() = (get_1_num_7() * get_f64_string(&pm_13)).to_string();
+            }
+        },
         _ => {
-            *_1_NUM_7.lock().unwrap() = 0.0;
-            *_1_STR_7.lock().unwrap() = "Error".to_string();
-            return;
+            if pm_14.is_empty() && pm_15.is_empty() {
+                *_1_NUM_7.lock().unwrap() = get_f64_string(&pm_13);
+                *_1_STR_7.lock().unwrap() = pm_13.clone();
+            } else {
+                *_1_NUM_7.lock().unwrap() = get_f64_string("Error");
+                *_1_STR_7.lock().unwrap() = "Error".to_string();
+            }
         }
-    };
-    *_1_NUM_7.lock().unwrap() = result;
-    *_1_STR_7.lock().unwrap() = result.to_string();
+    }
 }
 fn proc2(pm_16: String) {
     while !(!(get_contains_1_list_12(pm_16.clone()))) {
         proc1(
-            (get_item_1_list_12(
+            get_item_1_list_12(
                 if let Some(result) =
                     (((get_position_1_list_12(pm_16.clone())) - 1.0) as usize).checked_sub(1)
                 {
@@ -261,9 +277,8 @@ fn proc2(pm_16: String) {
                 } else {
                     0
                 },
-            ))
-            .to_string(),
-            (get_item_1_list_12(
+            ),
+            get_item_1_list_12(
                 if let Some(result) =
                     ((get_position_1_list_12(pm_16.clone())) as usize).checked_sub(1)
                 {
@@ -271,9 +286,8 @@ fn proc2(pm_16: String) {
                 } else {
                     0
                 },
-            ))
-            .to_string(),
-            (get_item_1_list_12(
+            ),
+            get_item_1_list_12(
                 if let Some(result) =
                     (((get_position_1_list_12(pm_16.clone())) + 1.0) as usize).checked_sub(1)
                 {
@@ -281,21 +295,20 @@ fn proc2(pm_16: String) {
                 } else {
                     0
                 },
-            ))
-            .to_string(),
+            ),
         );
         *_1_NUM_9.lock().unwrap() = (get_position_1_list_12(pm_16.clone())) - 1.0;
         *_1_STR_9.lock().unwrap() = ((get_position_1_list_12(pm_16.clone())) - 1.0).to_string();
-        let repeatto = (2.0) as usize;
+        let repeatto = 2.0 as usize;
         for _ in 0..repeatto {
-            let removein = ((get_1_num_9()) as i32 - 1) as usize;
+            let removein = (get_1_num_9() as i32 - 1) as usize;
             if removein != usize::MAX {
                 if removein < _1_LIST_12.lock().unwrap().len() {
                     _1_LIST_12.lock().unwrap().remove(removein);
                 }
             }
         }
-        let getin = ((get_1_num_9()) as i32 - 1) as usize;
+        let getin = (get_1_num_9() as i32 - 1) as usize;
         let itemin = get_1_str_7();
         if getin != usize::MAX {
             if let Some(item) = _1_LIST_12.lock().unwrap().get_mut(getin) {
@@ -305,26 +318,15 @@ fn proc2(pm_16: String) {
     }
 }
 fn proc3() {
-    while !(!(get_contains_1_list_12((("*").to_string()).to_string()))
-        && !(get_contains_1_list_12((("/").to_string()).to_string())))
+    while !(!(get_contains_1_list_12(String::from("*")))
+        && !(get_contains_1_list_12(String::from("/"))))
     {
-        if (get_position_1_list_12((("*").to_string()).to_string()))
-            > (get_position_1_list_12((("/").to_string()).to_string()))
+        if (get_position_1_list_12(String::from("*")))
+            > (get_position_1_list_12(String::from("/")))
         {
             proc1(
-                (get_item_1_list_12(
-                    if let Some(result) =
-                        (((get_position_1_list_12((("*").to_string()).to_string())) - 1.0) as usize)
-                            .checked_sub(1)
-                    {
-                        result
-                    } else {
-                        0
-                    },
-                ))
-                .to_string(),
-                (get_item_1_list_12(
-                    if let Some(result) = ((get_position_1_list_12((("*").to_string()).to_string()))
+                get_item_1_list_12(
+                    if let Some(result) = (((get_position_1_list_12(String::from("*"))) - 1.0)
                         as usize)
                         .checked_sub(1)
                     {
@@ -332,34 +334,40 @@ fn proc3() {
                     } else {
                         0
                     },
-                ))
-                .to_string(),
-                (get_item_1_list_12(
+                ),
+                get_item_1_list_12(
                     if let Some(result) =
-                        (((get_position_1_list_12((("*").to_string()).to_string())) + 1.0) as usize)
-                            .checked_sub(1)
+                        ((get_position_1_list_12(String::from("*"))) as usize).checked_sub(1)
                     {
                         result
                     } else {
                         0
                     },
-                ))
-                .to_string(),
+                ),
+                get_item_1_list_12(
+                    if let Some(result) = (((get_position_1_list_12(String::from("*"))) + 1.0)
+                        as usize)
+                        .checked_sub(1)
+                    {
+                        result
+                    } else {
+                        0
+                    },
+                ),
             );
-            *_1_NUM_9.lock().unwrap() =
-                (get_position_1_list_12((("*").to_string()).to_string())) - 1.0;
+            *_1_NUM_9.lock().unwrap() = (get_position_1_list_12(String::from("*"))) - 1.0;
             *_1_STR_9.lock().unwrap() =
-                ((get_position_1_list_12((("*").to_string()).to_string())) - 1.0).to_string();
-            let repeatto = (2.0) as usize;
+                ((get_position_1_list_12(String::from("*"))) - 1.0).to_string();
+            let repeatto = 2.0 as usize;
             for _ in 0..repeatto {
-                let removein = ((get_1_num_9()) as i32 - 1) as usize;
+                let removein = (get_1_num_9() as i32 - 1) as usize;
                 if removein != usize::MAX {
                     if removein < _1_LIST_12.lock().unwrap().len() {
                         _1_LIST_12.lock().unwrap().remove(removein);
                     }
                 }
             }
-            let getin = ((get_1_num_9()) as i32 - 1) as usize;
+            let getin = (get_1_num_9() as i32 - 1) as usize;
             let itemin = get_1_str_7();
             if getin != usize::MAX {
                 if let Some(item) = _1_LIST_12.lock().unwrap().get_mut(getin) {
@@ -368,19 +376,8 @@ fn proc3() {
             };
         } else {
             proc1(
-                (get_item_1_list_12(
-                    if let Some(result) =
-                        (((get_position_1_list_12((("/").to_string()).to_string())) - 1.0) as usize)
-                            .checked_sub(1)
-                    {
-                        result
-                    } else {
-                        0
-                    },
-                ))
-                .to_string(),
-                (get_item_1_list_12(
-                    if let Some(result) = ((get_position_1_list_12((("/").to_string()).to_string()))
+                get_item_1_list_12(
+                    if let Some(result) = (((get_position_1_list_12(String::from("/"))) - 1.0)
                         as usize)
                         .checked_sub(1)
                     {
@@ -388,34 +385,40 @@ fn proc3() {
                     } else {
                         0
                     },
-                ))
-                .to_string(),
-                (get_item_1_list_12(
+                ),
+                get_item_1_list_12(
                     if let Some(result) =
-                        (((get_position_1_list_12((("/").to_string()).to_string())) + 1.0) as usize)
-                            .checked_sub(1)
+                        ((get_position_1_list_12(String::from("/"))) as usize).checked_sub(1)
                     {
                         result
                     } else {
                         0
                     },
-                ))
-                .to_string(),
+                ),
+                get_item_1_list_12(
+                    if let Some(result) = (((get_position_1_list_12(String::from("/"))) + 1.0)
+                        as usize)
+                        .checked_sub(1)
+                    {
+                        result
+                    } else {
+                        0
+                    },
+                ),
             );
-            *_1_NUM_9.lock().unwrap() =
-                (get_position_1_list_12((("/").to_string()).to_string())) - 1.0;
+            *_1_NUM_9.lock().unwrap() = (get_position_1_list_12(String::from("/"))) - 1.0;
             *_1_STR_9.lock().unwrap() =
-                ((get_position_1_list_12((("/").to_string()).to_string())) - 1.0).to_string();
-            let repeatto = (2.0) as usize;
+                ((get_position_1_list_12(String::from("/"))) - 1.0).to_string();
+            let repeatto = 2.0 as usize;
             for _ in 0..repeatto {
-                let removein = ((get_1_num_9()) as i32 - 1) as usize;
+                let removein = (get_1_num_9() as i32 - 1) as usize;
                 if removein != usize::MAX {
                     if removein < _1_LIST_12.lock().unwrap().len() {
                         _1_LIST_12.lock().unwrap().remove(removein);
                     }
                 }
             }
-            let getin = ((get_1_num_9()) as i32 - 1) as usize;
+            let getin = (get_1_num_9() as i32 - 1) as usize;
             let itemin = get_1_str_7();
             if getin != usize::MAX {
                 if let Some(item) = _1_LIST_12.lock().unwrap().get_mut(getin) {
@@ -426,11 +429,11 @@ fn proc3() {
     }
 }
 fn proc4() {
-    *_1_NUM_7.lock().unwrap() = 0.0;
-    *_1_STR_7.lock().unwrap() = (("false").to_string()).to_string();
-    if (get_leng_1_list_12()).to_string() == ("1").to_string() {
+    *_1_NUM_7.lock().unwrap() = get_f64_string("false");
+    *_1_STR_7.lock().unwrap() = String::from("false");
+    if (get_leng_1_list_12()).to_string() == 1.0.to_string() {
         *_1_NUM_7.lock().unwrap() = get_f64_string(
-            (get_item_1_list_12(if let Some(result) = ((1.0) as usize).checked_sub(1) {
+            (get_item_1_list_12(if let Some(result) = (1.0 as usize).checked_sub(1) {
                 result
             } else {
                 0
@@ -438,36 +441,35 @@ fn proc4() {
             .clone(),
         );
         *_1_STR_7.lock().unwrap() =
-            (get_item_1_list_12(if let Some(result) = ((1.0) as usize).checked_sub(1) {
+            get_item_1_list_12(if let Some(result) = (1.0 as usize).checked_sub(1) {
                 result
             } else {
                 0
-            }))
-            .to_string();
+            });
     } else {
-        proc2(("..").to_string());
-        proc2((">=").to_string());
-        proc2(("<=").to_string());
-        proc2(("==").to_string());
-        proc2(("!=").to_string());
-        proc2(("||").to_string());
-        proc2(("&&").to_string());
-        proc2(("^").to_string());
-        proc2(("%").to_string());
+        proc2(String::from(".."));
+        proc2(String::from(">="));
+        proc2(String::from("<="));
+        proc2(String::from("=="));
+        proc2(String::from("!="));
+        proc2(String::from("||"));
+        proc2(String::from("&&"));
+        proc2(String::from("^"));
+        proc2(String::from("%"));
         proc3();
-        proc2(("+").to_string());
+        proc2(String::from("+"));
     };
 }
 fn proc5(pm_17: String) -> Arc<String> {
     *_1_NUM_6.lock().unwrap() = get_f64_string(pm_17.clone());
     *_1_STR_6.lock().unwrap() = pm_17.clone();
     *_1_NUM_5.lock().unwrap() = 0.0;
-    *_1_STR_5.lock().unwrap() = ("0").to_string();
+    *_1_STR_5.lock().unwrap() = 0.0.to_string();
     let foreachvarnum2 = *_1_NUM_3.lock().unwrap();
     let foreachvarstr2 = (*_1_STR_3.lock().unwrap()).clone();
     *_1_STR_3.lock().unwrap() = String::from("0");
     *_1_NUM_3.lock().unwrap() = 0.0;
-    let foreachto2 = (get_1_str_6().chars().count() as f64) as usize;
+    let foreachto2 = get_1_str_6().chars().count() as f64 as usize;
     let mut foreachnum2 = 1;
     while foreachnum2 <= foreachto2 {
         *_1_NUM_3.lock().unwrap() = foreachnum2 as f64;
@@ -483,13 +485,12 @@ fn proc5(pm_17: String) -> Arc<String> {
             *_1_STR_4.lock().unwrap() = foreachnum1.to_string();
             if get_char_at(get_1_str_6(), get_1_num_3())
                 == (get_itemglobal_list_1(
-                    if let Some(result) = ((get_1_num_4()) as usize).checked_sub(1) {
+                    if let Some(result) = (get_1_num_4() as usize).checked_sub(1) {
                         result
                     } else {
                         0
                     },
                 ))
-                .to_string()
             {
                 *_1_NUM_5.lock().unwrap() += 1.0;
                 *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
@@ -502,32 +503,32 @@ fn proc5(pm_17: String) -> Arc<String> {
     }
     *_1_NUM_3.lock().unwrap() = foreachvarnum2;
     *_1_STR_3.lock().unwrap() = foreachvarstr2;
-    if get_1_str_5() == ("0").to_string() {
+    if get_1_str_5() == 0.0.to_string() {
         *_1_NUM_7.lock().unwrap() = get_1_num_6();
         *_1_STR_7.lock().unwrap() = get_1_str_6();
     } else {
-        if !(get_char_at(get_1_str_6(), 1.0) == (("-").to_string()).to_string())
-            && !(get_char_at(get_1_str_6(), 1.0) == (("!").to_string()).to_string())
+        if !(get_char_at(get_1_str_6(), 1.0) == String::from("-"))
+            && !(get_char_at(get_1_str_6(), 1.0) == String::from("!"))
         {
             *_1_NUM_6.lock().unwrap() =
                 get_f64_string(("!".to_owned() + &get_1_str_6().to_owned()).clone());
-            *_1_STR_6.lock().unwrap() = ("!".to_owned() + &get_1_str_6().to_owned()).to_string();
+            *_1_STR_6.lock().unwrap() = "!".to_owned() + &get_1_str_6().to_owned();
         };
         *_1_NUM_3.lock().unwrap() = 0.0;
-        *_1_STR_3.lock().unwrap() = ("0").to_string();
+        *_1_STR_3.lock().unwrap() = 0.0.to_string();
         *_1_NUM_5.lock().unwrap() = 1.0;
-        *_1_STR_5.lock().unwrap() = ("1").to_string();
+        *_1_STR_5.lock().unwrap() = 1.0.to_string();
         *_1_NUM_8.lock().unwrap() = 0.0;
-        *_1_STR_8.lock().unwrap() = ("0").to_string();
+        *_1_STR_8.lock().unwrap() = 0.0.to_string();
         _1_LIST_10.lock().unwrap().clear();
-        let repeatto = (get_1_str_6().chars().count() as f64) as usize;
+        let repeatto = get_1_str_6().chars().count() as f64 as usize;
         for _ in 0..repeatto {
             *_1_NUM_3.lock().unwrap() += 1.0;
             *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
-            if (get_char_at(get_1_str_6(), get_1_num_3()) == (("\"").to_string()).to_string())
-                || (get_char_at(get_1_str_6(), get_1_num_3()) == (("'").to_string()).to_string())
+            if (get_char_at(get_1_str_6(), get_1_num_3()) == String::from("\""))
+                || (get_char_at(get_1_str_6(), get_1_num_3()) == String::from("'"))
             {
-                if get_1_str_8() == ("0").to_string() {
+                if get_1_str_8() == 0.0.to_string() {
                     *_1_NUM_8.lock().unwrap() += 1.0;
                     *_1_STR_8.lock().unwrap() = (*_1_NUM_8.lock().unwrap()).to_string();
                 } else {
@@ -535,7 +536,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                     *_1_STR_8.lock().unwrap() = (*_1_NUM_8.lock().unwrap()).to_string();
                 };
             };
-            if get_1_str_8() == ("0").to_string() {
+            if get_1_str_8() == 0.0.to_string() {
                 let foreachvarnum3 = *_1_NUM_4.lock().unwrap();
                 let foreachvarstr3 = (*_1_STR_4.lock().unwrap()).clone();
                 *_1_STR_4.lock().unwrap() = String::from("0");
@@ -547,26 +548,23 @@ fn proc5(pm_17: String) -> Arc<String> {
                     *_1_STR_4.lock().unwrap() = foreachnum3.to_string();
                     if (get_char_at(get_1_str_6(), get_1_num_3()).to_owned()
                         + &get_char_at(get_1_str_6(), get_1_num_3() + 1.0).to_owned())
-                        .to_string()
                         == (get_itemglobal_list_1(
-                            if let Some(result) = ((get_1_num_4()) as usize).checked_sub(1) {
+                            if let Some(result) = (get_1_num_4() as usize).checked_sub(1) {
                                 result
                             } else {
                                 0
                             },
                         ))
-                        .to_string()
                     {
-                        let addin = (get_char_at(get_1_str_6(), get_1_num_3()).to_owned()
-                            + &get_char_at(get_1_str_6(), get_1_num_3() + 1.0).to_owned())
-                            .to_string();
+                        let addin = get_char_at(get_1_str_6(), get_1_num_3()).to_owned()
+                            + &get_char_at(get_1_str_6(), get_1_num_3() + 1.0).to_owned();
                         _1_LIST_10.lock().unwrap().push(addin);
                         *_1_NUM_5.lock().unwrap() += 1.0;
                         *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
                         *_1_NUM_3.lock().unwrap() += 1.0;
                         *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
                         if (get_containsglobal_list_1(
-                            (get_char_at(
+                            get_char_at(
                                 get_item_1_list_10(
                                     if let Some(result) =
                                         ((get_1_num_5() - 1.0) as usize).checked_sub(1)
@@ -591,15 +589,14 @@ fn proc5(pm_17: String) -> Arc<String> {
                                     ),
                                     2.0,
                                 )
-                                .to_owned())
-                                .to_string(),
-                        )) || (get_1_str_5() == ("2").to_string())
+                                .to_owned(),
+                        )) || (get_1_str_5() == 2.0.to_string())
                         {
                             *_1_NUM_5.lock().unwrap() += 1.0;
                             *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
                         };
-                        let getin = (((get_leng_1_list_10()) - 1.0) as i32 - 1) as usize;
-                        let itemin = if (2.0) as usize
+                        let getin = ((((get_leng_1_list_10()) - 1.0) as i32) - 1) as usize;
+                        let itemin = if (2.0 as usize)
                             != ((get_item_1_list_10(
                                 if let Some(result) =
                                     (((get_leng_1_list_10()) - 1.0) as usize).checked_sub(1)
@@ -610,7 +607,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                                 },
                             ))
                             .chars()
-                            .count() as f64) as usize
+                            .count() as f64 as usize)
                         {
                             if let Some(substring) = (get_item_1_list_10(
                                 if let Some(result) =
@@ -622,7 +619,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                                 },
                             ))
                             .get(
-                                ((2.0) as i32 - 1) as usize
+                                ((2.0 as i32) - 1) as usize
                                     ..=(((get_item_1_list_10(
                                         if let Some(result) =
                                             (((get_leng_1_list_10()) - 1.0) as usize).checked_sub(1)
@@ -633,7 +630,8 @@ fn proc5(pm_17: String) -> Arc<String> {
                                         },
                                     ))
                                     .chars()
-                                    .count() as f64) as i32
+                                    .count() as f64
+                                        as i32)
                                         - 1) as usize,
                             ) {
                                 substring.to_string()
@@ -662,13 +660,12 @@ fn proc5(pm_17: String) -> Arc<String> {
                     } else {
                         if get_char_at(get_1_str_6(), get_1_num_3())
                             == (get_itemglobal_list_1(
-                                if let Some(result) = ((get_1_num_4()) as usize).checked_sub(1) {
+                                if let Some(result) = (get_1_num_4() as usize).checked_sub(1) {
                                     result
                                 } else {
                                     0
                                 },
                             ))
-                            .to_string()
                         {
                             let addin = get_char_at(get_1_str_6(), get_1_num_3());
                             _1_LIST_10.lock().unwrap().push(addin);
@@ -685,13 +682,13 @@ fn proc5(pm_17: String) -> Arc<String> {
                                     },
                                 ),
                                 1.0,
-                            ))) || (get_1_str_5() == ("2").to_string())
+                            ))) || (get_1_str_5() == 2.0.to_string())
                             {
                                 *_1_NUM_5.lock().unwrap() += 1.0;
                                 *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
                             };
-                            let getin = (((get_leng_1_list_10()) - 1.0) as i32 - 1) as usize;
-                            let itemin = if (2.0) as usize
+                            let getin = ((((get_leng_1_list_10()) - 1.0) as i32) - 1) as usize;
+                            let itemin = if (2.0 as usize)
                                 != ((get_item_1_list_10(
                                     if let Some(result) =
                                         (((get_leng_1_list_10()) - 1.0) as usize).checked_sub(1)
@@ -702,7 +699,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                                     },
                                 ))
                                 .chars()
-                                .count() as f64) as usize
+                                .count() as f64 as usize)
                             {
                                 if let Some(substring) = (get_item_1_list_10(
                                     if let Some(result) =
@@ -714,7 +711,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                                     },
                                 ))
                                 .get(
-                                    ((2.0) as i32 - 1) as usize
+                                    ((2.0 as i32) - 1) as usize
                                         ..=(((get_item_1_list_10(
                                             if let Some(result) = (((get_leng_1_list_10()) - 1.0)
                                                 as usize)
@@ -726,9 +723,8 @@ fn proc5(pm_17: String) -> Arc<String> {
                                             },
                                         ))
                                         .chars()
-                                        .count()
-                                            as f64)
-                                            as i32
+                                        .count() as f64
+                                            as i32)
                                             - 1)
                                             as usize,
                                 ) {
@@ -762,29 +758,28 @@ fn proc5(pm_17: String) -> Arc<String> {
                 *_1_NUM_4.lock().unwrap() = foreachvarnum3;
                 *_1_STR_4.lock().unwrap() = foreachvarstr3;
             };
-            let insertin = ((get_item_1_list_10(
-                if let Some(result) = ((get_1_num_5()) as usize).checked_sub(1) {
+            let insertin = (get_item_1_list_10(
+                if let Some(result) = (get_1_num_5() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
             ))
             .to_owned()
-                + &get_char_at(get_1_str_6(), get_1_num_3()).to_owned())
-                .to_string();
-            let insertin2 = ((get_1_num_5()) as i32 - 1) as usize;
+                + &get_char_at(get_1_str_6(), get_1_num_3()).to_owned();
+            let insertin2 = (get_1_num_5() as i32 - 1) as usize;
             if insertin2 != usize::MAX {
                 _1_LIST_10.lock().unwrap().insert(insertin2, insertin);
             }
-            let removein = ((get_1_num_5() + 1.0) as i32 - 1) as usize;
+            let removein = (((get_1_num_5() + 1.0) as i32) - 1) as usize;
             if removein != usize::MAX {
                 if removein < _1_LIST_10.lock().unwrap().len() {
                     _1_LIST_10.lock().unwrap().remove(removein);
                 }
             }
         }
-        let getin = ((get_leng_1_list_10()) as i32 - 1) as usize;
-        let itemin = if (2.0) as usize
+        let getin = (((get_leng_1_list_10()) as i32) - 1) as usize;
+        let itemin = if (2.0 as usize)
             != ((get_item_1_list_10(
                 if let Some(result) = ((get_leng_1_list_10()) as usize).checked_sub(1) {
                     result
@@ -793,7 +788,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                 },
             ))
             .chars()
-            .count() as f64) as usize
+            .count() as f64 as usize)
         {
             if let Some(substring) = (get_item_1_list_10(
                 if let Some(result) = ((get_leng_1_list_10()) as usize).checked_sub(1) {
@@ -803,7 +798,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                 },
             ))
             .get(
-                ((2.0) as i32 - 1) as usize
+                ((2.0 as i32) - 1) as usize
                     ..=(((get_item_1_list_10(
                         if let Some(result) = ((get_leng_1_list_10()) as usize).checked_sub(1) {
                             result
@@ -812,7 +807,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                         },
                     ))
                     .chars()
-                    .count() as f64) as i32
+                    .count() as f64 as i32)
                         - 1) as usize,
             ) {
                 substring.to_string()
@@ -845,32 +840,29 @@ fn proc5(pm_17: String) -> Arc<String> {
         while foreachnum4 <= foreachto4 {
             *_1_NUM_3.lock().unwrap() = foreachnum4 as f64;
             *_1_STR_3.lock().unwrap() = foreachnum4.to_string();
-            let getin = ((get_1_num_3()) as i32 - 1) as usize;
-            let itemin = ((get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+            let getin = (get_1_num_3() as i32 - 1) as usize;
+            let itemin = (get_item_1_list_10(
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
             ))
-            .replace(" ", ""))
-            .to_string();
+            .replace(" ", "");
             if getin != usize::MAX {
                 if let Some(item) = _1_LIST_10.lock().unwrap().get_mut(getin) {
                     *item = itemin;
                 };
             };
             if (get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
-            ))
-            .to_string()
-                == (("").to_string()).to_string()
+            )) == String::from("")
             {
-                let removein = ((get_1_num_3()) as i32 - 1) as usize;
+                let removein = (get_1_num_3() as i32 - 1) as usize;
                 if removein != usize::MAX {
                     if removein < _1_LIST_10.lock().unwrap().len() {
                         _1_LIST_10.lock().unwrap().remove(removein);
@@ -882,48 +874,45 @@ fn proc5(pm_17: String) -> Arc<String> {
         *_1_NUM_3.lock().unwrap() = foreachvarnum4;
         *_1_STR_3.lock().unwrap() = foreachvarstr4;
         *_1_NUM_3.lock().unwrap() = 0.0;
-        *_1_STR_3.lock().unwrap() = ("0").to_string();
+        *_1_STR_3.lock().unwrap() = 0.0.to_string();
         let repeatto = (get_leng_1_list_10()) as usize;
         for _ in 0..repeatto {
             *_1_NUM_3.lock().unwrap() += 1.0;
             *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
             if (get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
-            ))
-            .to_string()
-                == (("-").to_string()).to_string()
+            )) == String::from("-")
             {
                 if get_containsglobal_list_1(
-                    (get_item_1_list_10(
+                    get_item_1_list_10(
                         if let Some(result) = ((get_1_num_3() - 1.0) as usize).checked_sub(1) {
                             result
                         } else {
                             0
                         },
-                    ))
-                    .to_string(),
+                    ),
                 ) {
-                    let insertin = ("0").to_string();
-                    let insertin2 = ((get_1_num_3()) as i32 - 1) as usize;
+                    let insertin = 0.0.to_string();
+                    let insertin2 = (get_1_num_3() as i32 - 1) as usize;
                     if insertin2 != usize::MAX {
                         _1_LIST_10.lock().unwrap().insert(insertin2, insertin);
                     }
                     *_1_NUM_3.lock().unwrap() += 1.0;
                     *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
                 };
-                let getin = ((get_1_num_3()) as i32 - 1) as usize;
-                let itemin = (("+").to_string()).to_string();
+                let getin = (get_1_num_3() as i32 - 1) as usize;
+                let itemin = String::from("+");
                 if getin != usize::MAX {
                     if let Some(item) = _1_LIST_10.lock().unwrap().get_mut(getin) {
                         *item = itemin;
                     };
                 };
-                let getin = ((get_1_num_3() + 1.0) as i32 - 1) as usize;
-                let itemin = ("-".to_owned()
+                let getin = (((get_1_num_3() + 1.0) as i32) - 1) as usize;
+                let itemin = "-".to_owned()
                     + &(get_item_1_list_10(
                         if let Some(result) = ((get_1_num_3() + 1.0) as usize).checked_sub(1) {
                             result
@@ -931,8 +920,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                             0
                         },
                     ))
-                    .to_owned())
-                    .to_string();
+                    .to_owned();
                 if getin != usize::MAX {
                     if let Some(item) = _1_LIST_10.lock().unwrap().get_mut(getin) {
                         *item = itemin;
@@ -943,28 +931,26 @@ fn proc5(pm_17: String) -> Arc<String> {
             };
         }
         *_1_NUM_5.lock().unwrap() = 0.0;
-        *_1_STR_5.lock().unwrap() = ("0").to_string();
+        *_1_STR_5.lock().unwrap() = 0.0.to_string();
         *_1_NUM_3.lock().unwrap() = 0.0;
-        *_1_STR_3.lock().unwrap() = ("0").to_string();
+        *_1_STR_3.lock().unwrap() = 0.0.to_string();
         *_1_NUM_8.lock().unwrap() = 0.0;
-        *_1_STR_8.lock().unwrap() = ("0").to_string();
+        *_1_STR_8.lock().unwrap() = 0.0.to_string();
         let repeatto = (get_leng_1_list_10()) as usize;
         for _ in 0..repeatto {
             *_1_NUM_3.lock().unwrap() += 1.0;
             *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
             if (get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
-            ))
-            .to_string()
-                == (("(").to_string()).to_string()
+            )) == String::from("(")
             {
                 *_1_NUM_5.lock().unwrap() += 1.0;
                 *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
-                let removein = ((get_1_num_3()) as i32 - 1) as usize;
+                let removein = (get_1_num_3() as i32 - 1) as usize;
                 if removein != usize::MAX {
                     if removein < _1_LIST_10.lock().unwrap().len() {
                         _1_LIST_10.lock().unwrap().remove(removein);
@@ -974,35 +960,32 @@ fn proc5(pm_17: String) -> Arc<String> {
                 *_1_STR_3.lock().unwrap() = (*_1_NUM_3.lock().unwrap()).to_string();
             } else {
                 if (get_item_1_list_10(
-                    if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                    if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                         result
                     } else {
                         0
                     },
-                ))
-                .to_string()
-                    == ((")").to_string()).to_string()
+                )) == String::from(")")
                 {
                     *_1_NUM_5.lock().unwrap() += -1.0;
                     *_1_STR_5.lock().unwrap() = (*_1_NUM_5.lock().unwrap()).to_string();
-                    let removein = ((get_1_num_3()) as i32 - 1) as usize;
+                    let removein = (get_1_num_3() as i32 - 1) as usize;
                     if removein != usize::MAX {
                         if removein < _1_LIST_10.lock().unwrap().len() {
                             _1_LIST_10.lock().unwrap().remove(removein);
                         }
                     }
                 } else {
-                    let getin = ((get_1_num_3()) as i32 - 1) as usize;
-                    let itemin = (strings_repeat(" ", (get_1_num_5()) as usize).to_owned()
+                    let getin = (get_1_num_3() as i32 - 1) as usize;
+                    let itemin = strings_repeat(" ", get_1_num_5() as usize).to_owned()
                         + &(get_item_1_list_10(
-                            if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                            if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                                 result
                             } else {
                                 0
                             },
                         ))
-                        .to_owned())
-                        .to_string();
+                        .to_owned();
                     if getin != usize::MAX {
                         if let Some(item) = _1_LIST_10.lock().unwrap().get_mut(getin) {
                             *item = itemin;
@@ -1013,7 +996,7 @@ fn proc5(pm_17: String) -> Arc<String> {
         }
         _1_LIST_11.lock().unwrap().clear();
         *_1_NUM_5.lock().unwrap() = 0.0;
-        *_1_STR_5.lock().unwrap() = ("0").to_string();
+        *_1_STR_5.lock().unwrap() = 0.0.to_string();
         let foreachvarnum5 = *_1_NUM_3.lock().unwrap();
         let foreachvarstr5 = (*_1_STR_3.lock().unwrap()).clone();
         *_1_STR_3.lock().unwrap() = String::from("0");
@@ -1023,15 +1006,15 @@ fn proc5(pm_17: String) -> Arc<String> {
         while foreachnum5 <= foreachto5 {
             *_1_NUM_3.lock().unwrap() = foreachnum5 as f64;
             *_1_STR_3.lock().unwrap() = foreachnum5.to_string();
-            if (((get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+            if ((get_item_1_list_10(
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
             ))
             .matches(" ")
-            .count()) as f64)
+            .count() as f64)
                 > get_1_num_5()
             {
                 *_1_NUM_5.lock().unwrap() += 1.0;
@@ -1039,15 +1022,15 @@ fn proc5(pm_17: String) -> Arc<String> {
                 let addin = get_1_str_5();
                 _1_LIST_11.lock().unwrap().push(addin);
             } else {
-                if (((get_item_1_list_10(
-                    if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                if ((get_item_1_list_10(
+                    if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                         result
                     } else {
                         0
                     },
                 ))
                 .matches(" ")
-                .count()) as f64)
+                .count() as f64)
                     < get_1_num_5()
                 {
                     *_1_NUM_5.lock().unwrap() += -1.0;
@@ -1055,7 +1038,7 @@ fn proc5(pm_17: String) -> Arc<String> {
                     let addin = get_1_str_5();
                     _1_LIST_11.lock().unwrap().push(addin);
                 } else {
-                    let addin = (("").to_string()).to_string();
+                    let addin = String::from("");
                     _1_LIST_11.lock().unwrap().push(addin);
                 };
             };
@@ -1063,10 +1046,10 @@ fn proc5(pm_17: String) -> Arc<String> {
         }
         *_1_NUM_3.lock().unwrap() = foreachvarnum5;
         *_1_STR_3.lock().unwrap() = foreachvarstr5;
-        let addin = ("0").to_string();
+        let addin = 0.0.to_string();
         _1_LIST_11.lock().unwrap().push(addin);
         *_1_NUM_5.lock().unwrap() = 0.0;
-        *_1_STR_5.lock().unwrap() = ("0").to_string();
+        *_1_STR_5.lock().unwrap() = 0.0.to_string();
         let foreachvarnum6 = *_1_NUM_3.lock().unwrap();
         let foreachvarstr6 = (*_1_STR_3.lock().unwrap()).clone();
         *_1_STR_3.lock().unwrap() = String::from("0");
@@ -1078,7 +1061,7 @@ fn proc5(pm_17: String) -> Arc<String> {
             *_1_STR_3.lock().unwrap() = foreachnum6.to_string();
             if get_f64_string(
                 (get_item_1_list_11(
-                    if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                    if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                         result
                     } else {
                         0
@@ -1096,7 +1079,7 @@ fn proc5(pm_17: String) -> Arc<String> {
         *_1_STR_3.lock().unwrap() = foreachvarstr6;
         *_1_NUM_8.lock().unwrap() = get_1_num_5();
         *_1_STR_8.lock().unwrap() = get_1_str_5();
-        let repeatto = (get_1_num_5()) as usize;
+        let repeatto = get_1_num_5() as usize;
         for _ in 0..repeatto {
             while !(!(get_contains_1_list_11(get_1_str_8()))) {
                 _1_LIST_12.lock().unwrap().clear();
@@ -1106,22 +1089,21 @@ fn proc5(pm_17: String) -> Arc<String> {
                     - (get_position_1_list_11(get_1_str_8())))
                     as usize;
                 for _ in 0..repeatto {
-                    let addin = (get_item_1_list_10(
-                        if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+                    let addin = get_item_1_list_10(
+                        if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                             result
                         } else {
                             0
                         },
-                    ))
-                    .to_string();
+                    );
                     _1_LIST_12.lock().unwrap().push(addin);
-                    let removein = ((get_1_num_3()) as i32 - 1) as usize;
+                    let removein = (get_1_num_3() as i32 - 1) as usize;
                     if removein != usize::MAX {
                         if removein < _1_LIST_10.lock().unwrap().len() {
                             _1_LIST_10.lock().unwrap().remove(removein);
                         }
                     }
-                    let removein = ((get_1_num_3()) as i32 - 1) as usize;
+                    let removein = (get_1_num_3() as i32 - 1) as usize;
                     if removein != usize::MAX {
                         if removein < _1_LIST_11.lock().unwrap().len() {
                             _1_LIST_11.lock().unwrap().remove(removein);
@@ -1137,32 +1119,29 @@ fn proc5(pm_17: String) -> Arc<String> {
                 while foreachnum7 <= foreachto7 {
                     *_1_NUM_4.lock().unwrap() = foreachnum7 as f64;
                     *_1_STR_4.lock().unwrap() = foreachnum7.to_string();
-                    let getin = ((get_1_num_4()) as i32 - 1) as usize;
-                    let itemin = ((get_item_1_list_12(
-                        if let Some(result) = ((get_1_num_4()) as usize).checked_sub(1) {
+                    let getin = (get_1_num_4() as i32 - 1) as usize;
+                    let itemin = (get_item_1_list_12(
+                        if let Some(result) = (get_1_num_4() as usize).checked_sub(1) {
                             result
                         } else {
                             0
                         },
                     ))
-                    .replace(" ", ""))
-                    .to_string();
+                    .replace(" ", "");
                     if getin != usize::MAX {
                         if let Some(item) = _1_LIST_12.lock().unwrap().get_mut(getin) {
                             *item = itemin;
                         };
                     };
                     if (get_item_1_list_12(
-                        if let Some(result) = ((get_1_num_4()) as usize).checked_sub(1) {
+                        if let Some(result) = (get_1_num_4() as usize).checked_sub(1) {
                             result
                         } else {
                             0
                         },
-                    ))
-                    .to_string()
-                        == (("").to_string()).to_string()
+                    )) == String::from("")
                     {
-                        let removein = ((get_1_num_4()) as i32 - 1) as usize;
+                        let removein = (get_1_num_4() as i32 - 1) as usize;
                         if removein != usize::MAX {
                             if removein < _1_LIST_12.lock().unwrap().len() {
                                 _1_LIST_12.lock().unwrap().remove(removein);
@@ -1174,21 +1153,21 @@ fn proc5(pm_17: String) -> Arc<String> {
                 *_1_NUM_4.lock().unwrap() = foreachvarnum7;
                 *_1_STR_4.lock().unwrap() = foreachvarstr7;
                 proc4();
-                let insertin = (("").to_string()).to_string();
-                let insertin2 = ((get_1_num_3()) as i32 - 1) as usize;
+                let insertin = String::from("");
+                let insertin2 = (get_1_num_3() as i32 - 1) as usize;
                 if insertin2 != usize::MAX {
                     _1_LIST_11.lock().unwrap().insert(insertin2, insertin);
                 }
-                let getin = ((get_position_1_list_11((get_1_num_5() - 1.0).to_string())) as i32 - 1)
-                    as usize;
-                let itemin = (("").to_string()).to_string();
+                let getin = (((get_position_1_list_11((get_1_num_5() - 1.0).to_string())) as i32)
+                    - 1) as usize;
+                let itemin = String::from("");
                 if getin != usize::MAX {
                     if let Some(item) = _1_LIST_11.lock().unwrap().get_mut(getin) {
                         *item = itemin;
                     };
                 };
                 let insertin = get_1_str_7();
-                let insertin2 = ((get_1_num_3()) as i32 - 1) as usize;
+                let insertin2 = (get_1_num_3() as i32 - 1) as usize;
                 if insertin2 != usize::MAX {
                     _1_LIST_10.lock().unwrap().insert(insertin2, insertin);
                 }
@@ -1206,14 +1185,13 @@ fn proc5(pm_17: String) -> Arc<String> {
         while foreachnum8 <= foreachto8 {
             *_1_NUM_3.lock().unwrap() = foreachnum8 as f64;
             *_1_STR_3.lock().unwrap() = foreachnum8.to_string();
-            let addin = (get_item_1_list_10(
-                if let Some(result) = ((get_1_num_3()) as usize).checked_sub(1) {
+            let addin = get_item_1_list_10(
+                if let Some(result) = (get_1_num_3() as usize).checked_sub(1) {
                     result
                 } else {
                     0
                 },
-            ))
-            .to_string();
+            );
             _1_LIST_12.lock().unwrap().push(addin);
             foreachnum8 += 1;
         }
@@ -1221,11 +1199,10 @@ fn proc5(pm_17: String) -> Arc<String> {
         *_1_STR_3.lock().unwrap() = foreachvarstr8;
         proc4();
         _1_LIST_10.lock().unwrap().clear();
-        return Arc::new(get_1_str_7().to_string());
+        return Arc::new(get_1_str_7());
     };
-    return Arc::new(get_1_str_7().to_string());
+    Arc::new(get_1_str_7())
 }
-/// Computational expression
 pub fn calc<T: AsRef<str>>(expression: T) -> f64 {
     *GLOBAL_LIST_1.lock().unwrap() = [
         "==", ">=", "<=", "!=", ">", "<", "+", "-", "*", "/", "%", "&&", "||", "..", "(", ")",
