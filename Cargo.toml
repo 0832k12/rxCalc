@@ -1,7 +1,7 @@
 # By Lingba Saner 24213 🍥 v0.11-dev
 [package]
 name = "rxcalc"
-version = "1.0.3"
+version = "1.0.4"
 edition = "2021"
 description = "An expression calculator, originally written in Scratch."
 readme = "README.md"
@@ -9,5 +9,3 @@ license = "MIT OR Apache-2.0"
 authors = ["0832 <0832k12@gmail.com>"]
 keywords = ["calc", "eval", "expression", "scratch", "0832",]
 repository = "https://github.com/0832k12/rxCalc/"
-[dependencies]
-lazy_static = "1.4"
