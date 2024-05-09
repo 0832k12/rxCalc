@@ -1,7 +1,7 @@
 # By Lingba Saner 24213 🍥 v0.11-dev
 [package]
 name = "rxcalc"
-version = "1.0.4"
+version = "1.0.5"
 edition = "2021"
 description = "An expression calculator, originally written in Scratch."
 readme = "README.md"

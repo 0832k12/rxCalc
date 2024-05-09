@@ -12,3 +12,4 @@ You can also use it as a separate project:
 $ cargo run -- '1*(1+1)'
 2
 ```
+[source code](https://github.com/rsc-project/rxcalc)
